@@ -1,0 +1,15 @@
+sudo apt update && sudo apt upgrade –y
+sudo apt install docker.io
+sudo docker pull mysql:5.7
+sudo docker run -d -p 3306:3306 --name ContainerBD -e "MYSQL_DATABASE=ToodDatabase" -e "MYSQL_ROOT_PASSWORD=sptech" mysql:5.7
+sudo docker exec -it ContainerBD bash
+mysql –u root -p
+
+-----------------------------------
+CREATE TABLE IF NOT EXISTS `ToodDatabase`.`DadoTotem` (
+  `idDadosTotem` INT NOT NULL AUTO_INCREMENT,
+  `dataHora` DATETIME NULL,
+  `qtdRam` varchar(100),
+  `qtdDisco` varchar(100),
+  `qtdProcessador` varchar(100),
+  PRIMARY KEY (`idDadosTotem`);	
