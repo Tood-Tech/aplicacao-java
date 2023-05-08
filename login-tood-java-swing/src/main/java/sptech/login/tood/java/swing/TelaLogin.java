@@ -158,6 +158,7 @@ public class TelaLogin extends javax.swing.JFrame {
             btnAprovacao.setVisible(false);
             lblTituloTela.setVisible(false);
             lbLoginRealizado.setText("Login realizado!");
+            System.out.println("login realizado!");
             lbDeuErrado.setText("");
 
             Sistema sistema = looca.getSistema();
@@ -211,14 +212,16 @@ public class TelaLogin extends javax.swing.JFrame {
                     memoriaEmUso = memoria.getEmUso();
                     processadorEmUso = processador.getUso();
 
-                    System.out.println("Memória em uso: " + formatarBytes(memoriaEmUso));
-                    System.out.println(String.format("Processador em uso: %.1f \n", processadorEmUso));
-                    System.out.println("Janelas Vísiveis: " + janelaGrupo.getTotalJanelasVisiveis());
-                    
+//                    System.out.println("Memória em uso: " + formatarBytes(memoriaEmUso));
+//                    System.out.println(String.format("Processador em uso: %.1f \n", processadorEmUso));
+//                    System.out.println("Janelas Vísiveis: " + janelaGrupo.getTotalJanelasVisiveis());
+
+                    System.out.println(String.format("Inseridos os valores: Memoria: %s, Volume: %s, Processador: %.2f", formatarBytes(memoria.getEmUso()), formatarBytes(volume.getDisponivel()) ,processador.getUso()));
+
                     con.update("insert into [dbo].[DadoTotem] values (2, CONVERT(VARCHAR(19), GETDATE(), 120) , ?, ?, ?)", 
                             formatarBytes(memoria.getEmUso()), formatarBytes(volume.getDisponivel()) ,String.format("%.2f", processador.getUso()) );
                     
-                    conLocal.update("insert into DadoTotem(qtdRam, qtdDisco, qtdProcessador) values (?, ?, ?)", 
+                    conLocal.update("insert into DadoTotem(qtdRam, qtdDisco, qtdProcessador) values (?, ?, ?)",
                             formatarBytes(memoria.getEmUso()), formatarBytes(volume.getDisponivel()) ,String.format("%.2f", processador.getUso()));
                 }
             }, 0, 5000);

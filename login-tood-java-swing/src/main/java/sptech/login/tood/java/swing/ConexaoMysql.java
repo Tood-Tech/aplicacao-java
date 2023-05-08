@@ -22,7 +22,7 @@ public class ConexaoMysql {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 //        dataSource.setUrl("jdbc:mysql://localhost:3306/teste");
         dataSource.setUrl("jdbc:mysql://localhost:3306/ToodDatabase");
-        dataSource.setUsername("aluno");
+        dataSource.setUsername("root");
         dataSource.setPassword("sptech");
 
         this.conexaoDoBanco = new JdbcTemplate(dataSource);
